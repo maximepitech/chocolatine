@@ -20,11 +20,11 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
-          if find ./ ( -name "#*#" -o -name "*~" -o -name ".o" -o -name "*.a" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" -o -iname "*pain_au_chocolat*" -o -path "/tmp/" -type f ) -exec false {} +
+          if find ./ \( -name "#*#" -o -name "*~" -o -name ".o" -o -name "*.a" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" -o -iname "*pain_au_chocolat*" -o -path "/tmp/" -type f \) -exec false {} +
             then
               exit 0
             else
-              path=$(find ./ ( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" -o -iname "*pain_au_chocolat*" -o -path "/tmp/" -type f ))
+              path=$(find ./ \( -name "#*#" -o -name "*~" -o -name "*.o" -o -name "*.a" -o -name "*.so" -o -name "*.gcno" -o -name "*.gcda" -o -name "*.gcov" -o -iname "*pain_au_chocolat*" -o -path "/tmp/" -type f \))
               for i in $path; do
                  echo "::error file=$i,line=1,endLine=1,title=Unwanted file detected::$i"
               done
